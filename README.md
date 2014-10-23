@@ -1,2 +1,2 @@
-angular-js
+Laboratório de projetos com Angular-js
 ==========
