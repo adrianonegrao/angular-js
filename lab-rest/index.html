@@ -1,0 +1,46 @@
+<html encode="UTC8">
+<head>
+	<meta charset="UTF-8">
+	<script src="js/ng/angular.min.js"></script>
+	<script src="js/app.js"></script>
+	<link rel="stylesheet" href="css/bootstrap.css">
+</head>
+
+<body ng-app="Formulario">
+
+	<div class="formulario" ng-controller="FormCtrl as ctrl">
+		<h4>Form Cliente</h4>
+		<br>
+		
+		<form ng-submit="incluir()" name="myform">
+			
+			Nome: <input type="text" name="nome" ng-model="nomeCliente" required></input>
+			<br>
+			Estado: 
+			<select ng-model="estadoCliente" ng-options="estado.uf for estado in uf" required>
+				<option value="">-- estado --</option>
+			</select>
+
+			<br>
+			<span ng-show="nomeCliente.length > 0">{{nomeCliente}}, natural {{estadoCliente.uf}}</span>
+			<button type="submit">Add</button>
+
+			<br>
+		</form>
+		
+		<strong>Busca resultado Rest:</strong>
+		<div ng-repeat="usuario in usuarios">
+			Login: {{usuario.login}}<p>
+			Senha: {{usuario.senha}}<p>
+		</div>
+
+
+		<div class="show-list" ng-show="clientes.length">
+			<li ng-repeat="cliente in clientes">
+				{{$index+1}} - {{cliente.nome}}, natural {{cliente.uf}} [<a href="" ng-click="delete($index)">delete</a>]
+			</li>
+		</div>
+
+	</div>
+</body>
+<html>
